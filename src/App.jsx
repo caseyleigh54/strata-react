@@ -9,7 +9,7 @@ import {
     TorusWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
-import { AccountProvider, StrataSdksProvider } from '@strata-foundation/react';
+import { AccountProvider, StrataSdksProvider, useStrataSdks } from '@strata-foundation/react';
 import React, { FC, ReactNode, useMemo } from 'react';
 
 require('./App.css');
@@ -61,6 +61,8 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
 };
 
 const Content: FC = () => {
+    const { tokenCollectiveSdk, tokenMetadataSdk } = useStrataSdks();
+    console.log(tokenCollectiveSdk, tokenMetadataSdk);
     return (
         <div className="App">
             <WalletMultiButton />
